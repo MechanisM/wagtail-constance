@@ -1,0 +1,88 @@
+{% extends "wagtailadmin/base.html" %}
+{% load i18n %}
+
+
+{% block titletag %}{% trans "Constance config" %}{% endblock %}
+{% block bodyclass %}constance{% endblock %}
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        <li class="home"><a href="{% url 'wagtailadmin_home' %}" class="icon icon-home text-replace">{% trans 'Home' %}</a></li>
+        <li><a href="#">{% trans "Settings" %}</a></li>
+        <li><a href="{{ page.url }}">{% trans "Constance config" %}</a></li>
+    </ul>
+
+    {% trans "Constance config" as constance_header %}
+    {% include "wagtailadmin/shared/header.html" with title=constance_header icon="cogs" %}
+
+
+    <div id="content-main" class="inline-related tabular">
+        <div class="module" id="changelist">
+            <form id="changelist-form" action="{% url 'constance_config' %}" method="post">{% csrf_token %}
+                {% if form.errors %}
+                    <ul class="errorlist">
+                {% endif %}
+                {% for field in form.hidden_fields %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    {{ field }}
+                {% endfor %}
+                {% if form.errors %}
+                    </ul>
+                {% endif %}
+                <table class="listing">
+                    <thead>
+                    <tr>
+                        <th><div class="text">{% trans 'Name' %}</div></th>
+                        <th><div class="text">{% trans 'Default' %}</div></th>
+                        <th><div class="text">{% trans 'Value' %}</div></th>
+                        <th><div class="text">{% trans 'Is modified' %}</div></th>
+                    </tr>
+                    </thead>
+                    {% for item in config %}
+                        <tr{% if item.modified %} class="title"{% endif %}>
+                            <th><h2>{{ item.name }}</h2></th>
+                            <td>{{ item.default }}</td>
+                            <td>
+                                {{ item.form_field.errors }}
+
+                                <div class="field-content">
+                                    <div class="input">
+                                        {{ item.form_field }}
+                                    </div>
+                                    <p class="help">{{ item.help_text }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                {% if item.modified %}
+                                    <span class="icon icon-success"></span>
+                                {% else %}
+                                    <span class="icon icon-radio-full"></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <footer>
+                    <ul>
+                        <li class="actions">
+                            <input type="submit" name="_save" class="button" value="{% trans 'Save' %}">
+                        </li>
+                    </ul>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_css %}
+    {% include 'wagtailadmin/pages/_editor_css.html' %}
+    {{ form.media.css }}
+{% endblock %}
+{% block extra_js %}
+    {% include 'wagtailadmin/pages/_editor_js.html' %}
+    {{ form.media.js }}
+{% endblock %}
