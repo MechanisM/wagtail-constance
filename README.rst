@@ -1,7 +1,7 @@
 Wagtail-Constance
 ~~~~~~~~~~~~~~~~~
 
-I know there is `wagtail.contrib.settings` available, but I'm so much love django-constance with redis backend!
+I know there is `wagtail.contrib.settings <http://docs.wagtail.io/en/latest/reference/contrib/settings.html>`_ available, but I'm a big fan of `django-constance <https://github.com/jazzband/django-constance>`_ with redis backend!
 
 
 
@@ -15,7 +15,7 @@ Make sure you installed `django-constance <https://github.com/jazzband/django-co
     pip install wagtail-constance
 
 
-And then just add `wagtailconstance` into `INSTALLED_APPS`:
+And then just add ``wagtailconstance`` into ``INSTALLED_APPS``:
 
 .. code-block:: py
 
