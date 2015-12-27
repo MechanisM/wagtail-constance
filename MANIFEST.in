@@ -1,3 +1,4 @@
-include AUTHORS
-include LICENSE
-include README.rst
+include AUTHORS LICENSE *.rst
+recursive-include wagtailconstance *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[cod]
