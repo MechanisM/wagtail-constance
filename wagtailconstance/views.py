@@ -11,7 +11,6 @@ from constance.admin import ConstanceForm
 config = LazyConfig()
 
 
-
 class ConstanceConfigView(FormView):
     form_class = ConstanceForm
     template_name = 'wagtailconstance/config.html'
