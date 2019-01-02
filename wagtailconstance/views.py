@@ -46,7 +46,7 @@ class ConstanceConfigView(FormView):
 
     def get_initial(self):
         data = super(ConstanceConfigView, self).get_initial()
-        default_initial = ((name, default) for name, (default, help_text) in settings.CONFIG.items() if
+        default_initial = ((name[0], name[1]) for name in settings.CONFIG.items() if
                            name in self.fields)
         initial = dict(default_initial,
                        **dict(config._backend.mget([k for k in settings.CONFIG.keys() if k in self.fields])))
