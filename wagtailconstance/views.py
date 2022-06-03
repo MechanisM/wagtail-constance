@@ -2,7 +2,7 @@ from operator import itemgetter
 from django.urls import reverse_lazy
 from django.utils.formats import localize
 from django.views.generic.edit import FormView
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from wagtail.admin import messages
 
 from constance import settings, LazyConfig
