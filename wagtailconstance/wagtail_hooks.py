@@ -1,15 +1,15 @@
-from django.conf.urls import url
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from wagtail.core import hooks
 from wagtail.admin.menu import MenuItem
 from .views import ConstanceConfigView
+from django.urls import include, re_path
 
 
 @hooks.register('register_admin_urls')
 def register_admin_urls():
     return [
-        url(r'^config/', ConstanceConfigView.as_view(), name='constance_config'),
+        re_path(r'^config/', ConstanceConfigView.as_view(), name='constance_config'),
     ]
 
 

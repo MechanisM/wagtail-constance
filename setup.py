@@ -17,7 +17,7 @@ setup(
     version=__version__,
     description="django-constance integration for Wagtail CMS",
     long_description=open('README.rst').read(),
-    url='http://github.com/MechanisM/wagtail-constance',
+    url='http://github.com/Alex-Saduk/wagtail-constance',
     author='Eugene MechanisM',
     author_email='eugene@mechanism.pro',
     license='MIT',
@@ -25,7 +25,7 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 4.0',
     ],
     keywords='django, config, constance',
     packages=find_packages(),
